@@ -1,7 +1,6 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import type { RouteRecordRaw } from "vue-router";
 
-
 import LoginView from "@/views/LoginView.vue";
 import AppLayout from "@/layouts/AppLayout.vue";
 
@@ -25,7 +24,7 @@ const routes: RouteRecordRaw[] = [
     children: [
       { path: "", component: TeacherDashboard, meta: { title: "Pulpit wykładowcy" } },
       { path: "sessions/:sessionId", component: TeacherSessionDetails, meta: { title: "Szczegóły zajęć" } },
-      { path: "sessions/:sessionId/scanner", component: TeacherScannerView, meta: { title: "Skaner" } },
+      { path: "sessions/:sessionId/scanner", component: TeacherScannerView, meta: { title: "Skaner (placeholder)" } },
     ],
   },
 
