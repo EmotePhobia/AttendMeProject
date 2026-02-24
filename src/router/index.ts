@@ -50,5 +50,23 @@ const router = createRouter({
 router.afterEach((to) => {
   document.title = `AttendMe — ${(to.meta.title as string) ?? "App"}`;
 });
+import { useAuthStore } from "@/stores/auth.store";
 
+router.beforeEach(async (to) => {
+  const auth = useAuthStore();
+
+
+  if (auth.token && !auth.user) {
+    await auth.restoreUser();
+  }
+
+  const isPublic = to.path === "/login";
+  if (!isPublic && !auth.isLoggedIn) return "/login";
+
+
+  if (isPublic && auth.isLoggedIn) {
+    if (auth.isTeacher) return "/teacher";
+    if (auth.isStudent) return "/student";
+  }
+});
 export default router;
