@@ -1,13 +1,16 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
+import { useAuthStore } from "@/stores/auth.store";
 
 const route = useRoute();
 const router = useRouter();
 
 const title = computed(() => (route.meta.title as string) ?? "AttendMe");
+const auth = useAuthStore();
 
-function logout() {
+function onLogout() {
+  auth.logout();
   router.push("/login");
 }
 </script>
@@ -19,7 +22,7 @@ function logout() {
         <div class="font-semibold">{{ title }}</div>
         <button
           class="text-sm px-3 py-1.5 rounded-lg bg-slate-900 text-white hover:bg-slate-800"
-          @click="logout"
+          @click="onLogout"
         >
           Wyloguj
         </button>

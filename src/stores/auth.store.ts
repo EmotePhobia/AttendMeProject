@@ -41,10 +41,19 @@ const isStudent = computed(() => !!user.value?.isStudent);
     }
   }
 
-  function logout() {
-    setToken(null);
-    user.value = null;
-  }
+function logout() {
+
+  sessionStorage.removeItem("authToken");
+
+
+  user.value = null;
+
+
+  sessionStorage.removeItem("scannerToken");
+  sessionStorage.removeItem("deviceRegisterToken");
+
+  // localStorage.removeItem("deviceToken");
+}
 
   return { token, user, isLoggedIn, isTeacher, isStudent, login, restoreUser, logout };
 });

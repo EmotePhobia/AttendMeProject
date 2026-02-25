@@ -28,16 +28,16 @@ const routes: RouteRecordRaw[] = [
     ],
   },
 
-  {
-    path: "/student",
-    component: AppLayout,
-    children: [
-      { path: "", component: StudentDashboard, meta: { title: "Pulpit studenta" } },
-      { path: "device-register", component: DeviceRegisterView, meta: { title: "Rejestracja urządzenia" } },
-      { path: "sessions/:courseGroupId", component: StudentSessionDetails, meta: { title: "Szczegóły zajęć" } },
-      { path: "attendance", component: AttendanceQrView, meta: { title: "Rejestruj obecność" } },
-    ],
-  },
+ {
+  path: "/student",
+  component: () => import("@/layouts/AppLayout.vue"),
+  children: [
+    { path: "", component: () => import("@/views/student/StudentDashboard.vue") },
+    { path: "attendance", component: () => import("@/views/student/AttendanceQrView.vue") },
+    { path: "device-register", component: () => import("@/views/student/DeviceRegisterView.vue"), meta: { title: "Rejestracja urządzenia" } },
+    { path: "sessions/:courseGroupId", component: () => import("@/views/student/StudentSessionDetails.vue") },
+  ],
+},
 
   { path: "/:pathMatch(.*)*", redirect: "/login" },
 ];

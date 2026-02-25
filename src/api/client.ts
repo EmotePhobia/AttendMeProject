@@ -4,20 +4,19 @@ export function configureApi() {
   OpenAPI.BASE = "https://attendme-backend.runasp.net";
 
   OpenAPI.TOKEN = async (options: any) => {
-    const url: string = options?.url ?? "";
+    const url = String(options?.url ?? "");
 
-    if (url.startsWith("/user/attendance/ticket/get")) {
-      return localStorage.getItem("deviceToken") ?? sessionStorage.getItem("authToken") ?? "";
+    // 1) Ticket QR: musi iść na deviceToken (po rejestracji urządzenia)
+    if (url === "/user/attendance/ticket/get") {
+      return localStorage.getItem("deviceToken") ?? "";
     }
 
-    if (url.startsWith("/user/device/register")) {
+    // 2) Rejestracja urządzenia: musi iść na deviceRegisterToken (tymczasowy z linku)
+    if (url === "/user/device/register") {
       return sessionStorage.getItem("deviceRegisterToken") ?? "";
     }
 
-    if (url.includes("/course/session/attendance/register")) {
-      return sessionStorage.getItem("authToken") ?? "";
-    }
-
+    // 3) Wszystko inne (login user / teacher / student api) idzie na authToken
     return sessionStorage.getItem("authToken") ?? "";
   };
 }
