@@ -51,18 +51,22 @@ function calcDateRange(filter: TimeFilter): { from?: string; to?: string } {
 function buildBody(): CourseSessionListFiltersPagedListParams {
   const range = calcDateRange(timeFilter.value);
 
-  const body: any = {
+  const filters: CourseSessionListFilters = {};
+
+  // zakres czasu
+  if (range.from) filters.dateStart = range.from;
+  if (range.to) filters.dateEnd = range.to;
+
+  // tekst (przedmiot/grupa/sala…)
+  const q = textFilter.value.trim();
+  if (q) filters.search = q; // najprościej
+
+  return {
     pageNumber: 1,
     pageSize: 999999,
+    filters: Object.keys(filters).length ? filters : undefined,
+    sortBy: null,
   };
-
-  
-  if (range.from) body.dateFrom = range.from;
-  if (range.to) body.dateTo = range.to;
-
-  if (textFilter.value.trim()) body.searchText = textFilter.value.trim();
-
-  return body as CourseSessionListFiltersPagedListParams;
 }
 
 async function load() {
