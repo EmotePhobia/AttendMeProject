@@ -36,6 +36,7 @@ const routes: RouteRecordRaw[] = [
     { path: "attendance", component: () => import("@/views/student/AttendanceQrView.vue") },
     { path: "device-register", component: () => import("@/views/student/DeviceRegisterView.vue"), meta: { title: "Rejestracja urządzenia" } },
     { path: "sessions/:courseGroupId", component: () => import("@/views/student/StudentSessionDetails.vue") },
+    { path: "sessions/:courseGroupId", component: () => import("@/views/student/StudentSessionDetails.vue"), meta: { title: "Szczegóły zajęć" } },
   ],
 },
 
