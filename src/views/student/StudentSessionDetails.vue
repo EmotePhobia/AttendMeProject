@@ -22,7 +22,7 @@ const header = computed(() => {
   };
 });
 
-// Z AttendanceLog wynika: jeśli jest wpis dla courseSessionId => obecny
+
 const presentSessionIds = computed(() => {
   const set = new Set<number>();
   for (const a of attendance.value) {
@@ -31,7 +31,7 @@ const presentSessionIds = computed(() => {
   return set;
 });
 
-// (opcjonalnie) data rejestracji obecności dla danej sesji
+
 const presentInfoBySessionId = computed(() => {
   const m = new Map<number, string>();
   for (const a of attendance.value) {
@@ -81,7 +81,7 @@ async function loadAll() {
   }
 }
 
-//autorefresh
+
 let timer: number | undefined;
 onMounted(async () => {
   await loadAll();

@@ -1,5 +1,36 @@
-# Vue 3 + TypeScript + Vite
+# AttendMe  — Projekt zaliczeniowy (Vue 3 + TS)
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Aplikacja SPA do sprawdzania obecności na zajęciach (front-end) wykonana w **Vue 3** z użyciem **Composition API** oraz **TypeScript**.  
+UI: **TailwindCSS**. Komunikacja z backendem: wygenerowany klient **OpenAPI**.
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+Backend: https://attendme-backend.runasp.net/  
+Swagger: https://attendme-backend.runasp.net/swagger/index.html  
+Demo (referencyjne): https://attendme.runasp.net/#/login
+
+
+## Instalacja i uruchomienie
+
+```bash
+npm install
+npm run dev
+```
+
+Aplikacja uruchomi się domyślnie na: http://localhost:5173/#/login
+
+---
+
+## Dane do logowania
+
+### Wykładowca
+- login: pk
+- hasło: 123#Asd
+
+### Student
+Login według wzorca: stu<NUMER_INDEKSU>  
+Hasło: <NUMER_INDEKSU>
+
+Przykład:
+- login: stu12345
+- hasło: 12345
+
+---

@@ -146,7 +146,6 @@ watch([timeFilter, textFilter], () => {
               </div>
             </div>
 
-            <!-- szczegóły studenta zrobimy w następnym kroku -->
             <router-link
               class="shrink-0 px-3 py-1.5 rounded-lg border bg-slate-50 hover:bg-white"
               :to="`/student/sessions/${s.courseGroupId}`"

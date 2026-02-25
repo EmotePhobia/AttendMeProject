@@ -18,10 +18,9 @@ const loading = ref(false);
 const message = ref<string | null>(null);
 
 onMounted(() => {
-  // 1) Wariant z demo: /#/device/register/:token
+
   const tokenParam = String(route.params.token ?? "").trim();
 
-  // 2) Wariant query: /#/student/device-register?token=...
   const tokenQuery = String(route.query.token ?? "").trim();
 
   const t = tokenParam || tokenQuery;

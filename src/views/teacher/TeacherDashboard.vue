@@ -53,11 +53,10 @@ function buildBody(): CourseSessionListFiltersPagedListParams {
 
   const filters: CourseSessionListFilters = {};
 
-  // zakres czasu
   if (range.from) filters.dateStart = range.from;
   if (range.to) filters.dateEnd = range.to;
 
-  // tekst (przedmiot/grupa/sala…)
+
   const q = textFilter.value.trim();
   if (q) filters.search = q; // najprościej
 

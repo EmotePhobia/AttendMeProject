@@ -27,7 +27,7 @@ const isStudent = computed(() => !!user.value?.isStudent);
 
     setToken(t);
 
-    // 2) pobierz usera
+    //  pobiera usera
     user.value = await UserService.getUserGet(undefined);
   }
 
